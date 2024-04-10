@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    command: --init base
     platform: linux/x86_64
     container_name: ${WEB_HOST}
     image: ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG}
@@ -18,7 +19,6 @@ services:
       - VIRTUAL_HOST=odoo15.marlonfalcon.com
     entrypoint: "/usr/bin/odoo -c /etc/odoo/odoo.conf"
     restart: always
-    command: --init base
   db16:
     platform: linux/x86_64
     container_name: ${DB_HOST}
